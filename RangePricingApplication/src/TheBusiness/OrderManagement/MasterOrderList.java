@@ -54,4 +54,8 @@ for(Order order: orders){
 return sum;
     }
 
+public ArrayList<Order> getOrders() {
+    return orders;
+}
+
 }

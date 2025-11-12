@@ -34,12 +34,23 @@ import TheBusiness.Supplier.Supplier;
 import TheBusiness.Supplier.SupplierDirectory;
 import TheBusiness.UserAccountManagement.UserAccount;
 import TheBusiness.UserAccountManagement.UserAccountDirectory;
+import TheBusiness.DataGenerator;
 
 /**
  *
  * @author kal bugrara
  */
 class ConfigureABusiness {
+    
+    static Business initializeWithGeneratedData() {
+    Business business = new Business("Xerox");
+    
+    // Generate all data
+    DataGenerator generator = new DataGenerator(business);
+    generator.generateAllData();
+    
+    return business;
+}
 
     static Business initialize() {
         Business business = new Business("Xerox");
@@ -256,6 +267,8 @@ class ConfigureABusiness {
         
         msol.getRevenueByMarketChannelCombo(tvchannelteenmarket);
         msol.getRevenueByChannel(tvchannel);
+        
+        
 
         
         

@@ -17,10 +17,11 @@ public class RangePricingApplication {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-       Business business = ConfigureABusiness.initializeMarkets();
-              
+        // Initialize business with generated data
+        Business business = ConfigureABusiness.initializeWithGeneratedData();
+        
+        System.out.println("\nBusiness initialized successfully!");
+        System.out.println("Ready to start pricing analysis...");
     }
 
 }
-
