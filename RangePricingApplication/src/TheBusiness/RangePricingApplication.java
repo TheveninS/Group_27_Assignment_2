@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TheBusiness;
 
 import TheBusiness.Business.Business;
+import TheBusiness.ProductManagement.PricingAnalyzer;
 
 /**
  *
@@ -13,15 +9,16 @@ import TheBusiness.Business.Business;
  */
 public class RangePricingApplication {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // Initialize business with generated data
+        // Step 1: Generate all data
         Business business = ConfigureABusiness.initializeWithGeneratedData();
         
         System.out.println("\nBusiness initialized successfully!");
-        System.out.println("Ready to start pricing analysis...");
+        
+        // Step 2: Analyze pricing performance
+        System.out.println("\nAnalyzing product performance...");
+        PricingAnalyzer analyzer = new PricingAnalyzer(business);
+        analyzer.printAnalysisReport();
     }
 
 }
