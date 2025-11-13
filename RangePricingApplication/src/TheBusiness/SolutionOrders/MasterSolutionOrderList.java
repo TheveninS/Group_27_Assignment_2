@@ -16,55 +16,77 @@ import java.util.ArrayList;
  * @author kal bugrara
  */
 public class MasterSolutionOrderList {
-        ArrayList<SolutionOrder> solutionorderlist;
+    ArrayList<SolutionOrder> solutionorderlist;
 
     public MasterSolutionOrderList() {
         solutionorderlist = new ArrayList();
     }
 
-    public SolutionOrder newSolutionOrder(SolutionOffer soloffer,  MarketChannelAssignment mca) {
-
-        SolutionOrder so = new SolutionOrder(soloffer,   mca);
+    public SolutionOrder newSolutionOrder(SolutionOffer soloffer, MarketChannelAssignment mca) {
+        SolutionOrder so = new SolutionOrder(soloffer, mca);
         solutionorderlist.add(so);
         soloffer.addSolutionOrder(so);
         return so;
-
     }
 
     public int getRevenueByMarket(Market m) {
         int sum = 0;
         for(SolutionOrder so: solutionorderlist){
-         
-         MarketChannelAssignment mcc =   so.getMarketChannelCombo();
-         if(mcc.getMarket()==m) sum = sum +so.getSolutionPrice();
-           
+            MarketChannelAssignment mcc = so.getMarketChannelCombo();
+            if(mcc.getMarket() == m) sum = sum + so.getSolutionPrice();
         }
-
         return sum;
-
     }
+    
     public int getRevenueByChannel(Channel c) {
         int sum = 0;
         for(SolutionOrder so: solutionorderlist){
-         
-         MarketChannelAssignment mcc =   so.getMarketChannelCombo();
-         if(mcc.getChannel()==c) sum = sum +so.getSolutionPrice();
-           
+            MarketChannelAssignment mcc = so.getMarketChannelCombo();
+            if(mcc.getChannel() == c) sum = sum + so.getSolutionPrice();
         }
-
         return sum;
-
     }
+    
     public int getRevenueByMarketChannelCombo(MarketChannelAssignment mca) {
         int sum = 0;
         for(SolutionOrder so: solutionorderlist){
-         
-         MarketChannelAssignment mcc =   so.getMarketChannelCombo();
-         if(mcc==mca) sum = sum +so.getSolutionPrice(); 
-           
+            MarketChannelAssignment mcc = so.getMarketChannelCombo();
+            if(mcc == mca) sum = sum + so.getSolutionPrice(); 
         }
         return sum;
-
+    }
+    
+    // NEW METHODS FOR COUNTING ORDERS
+    public int getOrderCountByMarket(Market m) {
+        int count = 0;
+        for (SolutionOrder so : solutionorderlist) {
+            MarketChannelAssignment mcc = so.getMarketChannelCombo();
+            if (mcc.getMarket() == m) {
+                count++;
+            }
+        }
+        return count;
     }
 
+    public int getOrderCountByChannel(Channel c) {
+        int count = 0;
+        for (SolutionOrder so : solutionorderlist) {
+            MarketChannelAssignment mcc = so.getMarketChannelCombo();
+            if (mcc.getChannel() == c) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int getOrderCountByMarketChannelCombo(MarketChannelAssignment mca) {
+        int count = 0;
+        for (SolutionOrder so : solutionorderlist) {
+            MarketChannelAssignment mcc = so.getMarketChannelCombo();
+            if (mcc == mca) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
