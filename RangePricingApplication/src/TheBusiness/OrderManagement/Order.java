@@ -82,10 +82,21 @@ public class Order {
         else {return false;}
         
     }
-public void CancelOrder(){
-    status = "Cancelled";
-}
-public void Submit(){
-    status = "Submitted";
-}
+    
+    public void CancelOrder(){
+        status = "Cancelled";
+    }
+    
+    public void Submit(){
+        status = "Submitted";
+    }
+    
+    // Getter methods for accessing customer and salesperson
+    public CustomerProfile getCustomer() {
+        return customer;
+    }
+    
+    public SalesPersonProfile getSalesperson() {
+        return salesperson;
+    }
 }

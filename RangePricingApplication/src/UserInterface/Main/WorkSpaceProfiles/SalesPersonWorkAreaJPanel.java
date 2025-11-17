@@ -177,7 +177,7 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4IdentifyResourceAssetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4IdentifyResourceAssetsActionPerformed
-// Serve Customers
+
     try {
         // Get list of customers
         ArrayList<CustomerProfile> customers = business.getCustomerDirectory().getCustomerList();
@@ -240,6 +240,7 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
     CardSequencePanel.revalidate();
     CardSequencePanel.repaint();
     ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+    
 }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -276,6 +277,7 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
     } catch (Exception ex) {
         ex.printStackTrace();
         JOptionPane.showMessageDialog(this, "Error opening performance reports: " + ex.getMessage());
+    }
 }//GEN-LAST:event_jButton11ActionPerformed
     
 
