@@ -31,5 +31,9 @@ public class SalesPersonProfile extends Profile {
     public String getRole(){
         return  "Sales";
     }
+    
+        public ArrayList<Order> getSalesOrders() {
+        return salesorders;
+    }
 
 }

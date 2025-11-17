@@ -189,13 +189,14 @@ public class BusinessManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-
-        CardSequencePanel.removeAll();
-//        ManageVulns aos = new  ManageVulns(businessunit, CardSequencePanel);
-        // aos.setAgenda(businessunit.getRiskManagementAgenda());
-//        CardSequencePanel.add("ManageVulns", aos);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-
+// Manage Sales Personnel
+    UserInterface.SalesManagement.ManageSalesPersonnelJPanel panel = 
+        new UserInterface.SalesManagement.ManageSalesPersonnelJPanel(business, CardSequencePanel);
+    
+    CardSequencePanel.add("ManageSalesPersonnel", panel);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+//GEN-LAST:event_jButton9ActionPerformed
+ 
 }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -210,22 +211,22 @@ public class BusinessManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton6IdentifyEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6IdentifyEventsActionPerformed
         // TODO add your handling code here:
-        CardSequencePanel.removeAll();
-        //    IdentifyEventTypes iet= new IdentifyEventTypes(businessunit, CardSequencePanel);
-
-        //    CardSequencePanel.add("IdentifyEventTypes", iet);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-        //((java.awt.CardLayout)CardSequencePanel.getLayout()).show(CardSequencePanel, "IdentifyEventTypes");
+// Manage Prices
+    UserInterface.PriceSimulation.ManagePricesJPanel panel = 
+        new UserInterface.PriceSimulation.ManagePricesJPanel(business, CardSequencePanel);
+    
+    CardSequencePanel.add("ManagePrices", panel);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 }//GEN-LAST:event_jButton6IdentifyEventsActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-
-        CardSequencePanel.removeAll();
-        //      ViewBusinessUnitRiskProfile drpd= new ViewBusinessUnitRiskProfile(businessunit, CardSequencePanel);
-//        ManageHazards drpd = new ManageHazards(businessunit, CardSequencePanel);
-//        CardSequencePanel.add("ManageRiskProfiles", drpd);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+UserInterface.CustomerManagement.ManageCustomersJPanel panel = 
+        new UserInterface.CustomerManagement.ManageCustomersJPanel(business, CardSequencePanel);
+    
+    CardSequencePanel.add("ManageCustomers", panel);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+//GEN-LAST:event_jButton8ActionPerformed
 }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed

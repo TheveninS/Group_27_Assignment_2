@@ -16,6 +16,8 @@ import TheBusiness.SalesManagement.SalesPersonProfile;
 import UserInterface.Main.WorkSpaceProfiles.OrderManagement.ManageSalesPersonOrders;
 import UserInterface.Main.WorkSpaceProfiles.OrderManagement.ProcessOrder;
 import javax.swing.JPanel;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -175,62 +177,107 @@ public class SalesPersonWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4IdentifyResourceAssetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4IdentifyResourceAssetsActionPerformed
+// Serve Customers
+    try {
+        // Get list of customers
+        ArrayList<CustomerProfile> customers = business.getCustomerDirectory().getCustomerList();
         
-// TODO add your handling code here:
+        if (customers.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No customers available in the system.");
+            return;
+        }
+        
+        // Create array of customer names
+        String[] customerNames = new String[customers.size()];
+        for (int i = 0; i < customers.size(); i++) {
+            customerNames[i] = customers.get(i).getCustomerId();
+        }
+        
+        // Show selection dialog
+        String selectedCustomerName = (String) JOptionPane.showInputDialog(
+            this,
+            "Select a customer to serve:",
+            "Customer Selection",
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            customerNames,
+            customerNames[0]
+        );
+        
+        if (selectedCustomerName == null || selectedCustomerName.isEmpty()) {
+            return; // User cancelled
+        }
+        
+        CustomerProfile selectedCustomer = business.getCustomerDirectory().findCustomer(selectedCustomerName);
+        
+        if (selectedCustomer == null) {
+            JOptionPane.showMessageDialog(this, "Customer not found.");
+            return;
+        }
+        
+        UserInterface.Main.WorkSpaceProfiles.OrderManagement.ProcessOrder aos = 
+            new UserInterface.Main.WorkSpaceProfiles.OrderManagement.ProcessOrder(
+                business, selectedCustomer, salesperson, CardSequencePanel);
 
- 
-        String customername = customerNameTextField.getText();
-        if (customername.isEmpty()) return;
-        CustomerProfile selectedcustomer = business.getCustomerDirectory().findCustomer(customername);
-
-        ProcessOrder aos = new ProcessOrder(business, selectedcustomer ,salesperson, CardSequencePanel);
-
-        CardSequencePanel.add("ManageVulns", aos);
+        CardSequencePanel.add("ProcessOrder", aos);
+        CardSequencePanel.revalidate();
+        CardSequencePanel.repaint();
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+        
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error opening order panel: " + ex.getMessage());
+    }
+//GEN-LAST:event_jButton4IdentifyResourceAssetsActionPerformed
 
     }//GEN-LAST:event_jButton4IdentifyResourceAssetsActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-
-
-//        ManageVulns aos = new  ManageVulns(businessunit, CardSequencePanel);
-        // aos.setAgenda(businessunit.getRiskManagementAgenda());
-//        CardSequencePanel.add("ManageVulns", aos);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-
+        UserInterface.SalesManagement.ManageSalesProfileJPanel panel = 
+        new UserInterface.SalesManagement.ManageSalesProfileJPanel(business, salesperson, CardSequencePanel);
+    
+    CardSequencePanel.add("ManageProfile", panel);
+    CardSequencePanel.revalidate();
+    CardSequencePanel.repaint();
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-
-        ManageSalesPersonOrders iet = new ManageSalesPersonOrders(business, CardSequencePanel);
-
-        CardSequencePanel.add("FindResourceAsset", iet);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+        // Review Order Status History
+    ManageSalesPersonOrders iet = new ManageSalesPersonOrders(business, CardSequencePanel);
+    CardSequencePanel.add("OrderHistory", iet);
+    CardSequencePanel.revalidate();
+    CardSequencePanel.repaint();
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-
-        CardSequencePanel.removeAll();
-        //      ViewBusinessUnitRiskProfile drpd= new ViewBusinessUnitRiskProfile(businessunit, CardSequencePanel);
-//        ManageHazards drpd = new ManageHazards(businessunit, CardSequencePanel);
-//        CardSequencePanel.add("ManageRiskProfiles", drpd);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+        // Review Commission
+    UserInterface.SalesManagement.SalesCommissionJPanel panel = 
+        new UserInterface.SalesManagement.SalesCommissionJPanel(business, salesperson, CardSequencePanel);
+    
+    CardSequencePanel.add("ReviewCommission", panel);
+    CardSequencePanel.revalidate();
+    CardSequencePanel.repaint();
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-
-        CardSequencePanel.removeAll();
-//        ManageIncidents aos = new  ManageIncidents(businessunit, CardSequencePanel);
-        // aos.setAgenda(businessunit.getRiskManagementAgenda());
-//        CardSequencePanel.add("RiskAgendaObjectives", aos);
+        // Performance Reports - Open Sales Dashboard
+    try {
+        UserInterface.SalesManagement.SalesPerformanceDashboard dashboard = 
+            new UserInterface.SalesManagement.SalesPerformanceDashboard(business, salesperson, CardSequencePanel);
+        
+        CardSequencePanel.add("SalesPerformance", dashboard);
+        CardSequencePanel.revalidate();
+        CardSequencePanel.repaint();
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error opening performance reports: " + ex.getMessage());
 }//GEN-LAST:event_jButton11ActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField customerNameTextField;
