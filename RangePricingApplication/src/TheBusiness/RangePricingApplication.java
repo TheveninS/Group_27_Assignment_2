@@ -9,17 +9,13 @@ import TheBusiness.ProductManagement.*;
  */
 public class RangePricingApplication {
     
-
     public static void main(String[] args) {
-    // Launch the GUI instead of console output
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            new UserInterface.Main.PricingMainFrame().setVisible(true);
-        }
-    });
-
+        
         // Step 1: Initialize business with generated data
-        Business business = ConfigureABusiness.initializeWithGeneratedData();
+        System.out.println("═══════════════════════════════════════════════════════");
+        System.out.println("     RANGE PRICING APPLICATION - CONSOLE MODE");
+        System.out.println("═══════════════════════════════════════════════════════");
+        Business business = TheBusiness.ConfigureABusiness.initializeWithGeneratedData();
         
         // Step 2: Generate Top Performers Report
         System.out.println("\n" + "=".repeat(80));
@@ -84,9 +80,12 @@ public class RangePricingApplication {
         System.out.println("TOP PERFORMERS AFTER OPTIMIZATION");
         System.out.println("=".repeat(80));
         topReport.printTopPerformersReport();
+        
+        // Step 8: Inform about GUI
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("To use the interactive GUI interface:");
+        System.out.println("Run: UserInterface.Main.PricingMainFrame.main()");
+        System.out.println("Or run the PricingMainFrame class directly from your IDE");
+        System.out.println("=".repeat(80));
     }
-    
-    
-    
 }
-
