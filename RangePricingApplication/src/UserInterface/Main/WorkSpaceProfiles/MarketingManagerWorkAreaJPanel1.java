@@ -148,46 +148,41 @@ public class MarketingManagerWorkAreaJPanel1 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4IdentifyResourceAssetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4IdentifyResourceAssetsActionPerformed
-        // TODO add your handling code here:
-        CardSequencePanel.removeAll();
+    private void jButton4IdentifyResourceAssetsActionPerformed(java.awt.event.ActionEvent evt) {
+    // Manage Markets
+    UserInterface.MarketingManagement.ManageMarketsJPanel panel = 
+        new UserInterface.MarketingManagement.ManageMarketsJPanel(business, CardSequencePanel);
+    
+    CardSequencePanel.add("ManageMarkets", panel);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+}
 
-        ManageTheBusinessJPanel aos = new ManageTheBusinessJPanel(business, CardSequencePanel);
+private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {
+    // Manage Channels
+    UserInterface.MarketingManagement.ManageChannelsJPanel panel = 
+        new UserInterface.MarketingManagement.ManageChannelsJPanel(business, CardSequencePanel);
+    
+    CardSequencePanel.add("ManageChannels", panel);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+}
 
-        CardSequencePanel.add("ManageVulns", aos);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+private void jButton6IdentifyEventsActionPerformed(java.awt.event.ActionEvent evt) {
+    // Manage Prices - reuse existing panel
+    UserInterface.PriceSimulation.ManagePricesJPanel panel = 
+        new UserInterface.PriceSimulation.ManagePricesJPanel(business, CardSequencePanel);
+    
+    CardSequencePanel.add("ManagePrices", panel);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+}
 
-    }//GEN-LAST:event_jButton4IdentifyResourceAssetsActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-
-        ManageSuppliersJPanel iet = new ManageSuppliersJPanel(business, CardSequencePanel);
-
-        CardSequencePanel.add("FindResourceAsset", iet);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton6IdentifyEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6IdentifyEventsActionPerformed
-        // TODO add your handling code here:
-        CardSequencePanel.removeAll();
-        //    IdentifyEventTypes iet= new IdentifyEventTypes(businessunit, CardSequencePanel);
-
-        //    CardSequencePanel.add("IdentifyEventTypes", iet);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-        //((java.awt.CardLayout)CardSequencePanel.getLayout()).show(CardSequencePanel, "IdentifyEventTypes");
-}//GEN-LAST:event_jButton6IdentifyEventsActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-
-        CardSequencePanel.removeAll();
-//        ManageIncidents aos = new  ManageIncidents(businessunit, CardSequencePanel);
-        // aos.setAgenda(businessunit.getRiskManagementAgenda());
-//        CardSequencePanel.add("RiskAgendaObjectives", aos);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-}//GEN-LAST:event_jButton11ActionPerformed
+private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {
+    // Performance Reports - open Market Analytics Dashboard
+    UserInterface.MarketingManagement.MarketAnalyticsDashboard dashboard = 
+        new UserInterface.MarketingManagement.MarketAnalyticsDashboard(business, CardSequencePanel);
+    
+    CardSequencePanel.add("MarketAnalytics", dashboard);
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -17,8 +17,8 @@ import TheBusiness.SalesManagement.SalesPersonProfile;
  */
 public class Order {
 
-    ArrayList<OrderItem> orderitems;
-    CustomerProfile customer;
+    public ArrayList<OrderItem> orderitems;
+    public CustomerProfile customer;
     SalesPersonProfile salesperson;
     MarketChannelAssignment mca;
     String status;
@@ -99,4 +99,5 @@ public class Order {
     public SalesPersonProfile getSalesperson() {
         return salesperson;
     }
+    
 }
