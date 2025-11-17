@@ -81,6 +81,18 @@ public class ManageSalesPersonnelJPanel extends JPanel {
     if (salesPeople.isEmpty()) {
         model.addRow(new Object[]{"No sales personnel yet", "-", "-", "-"});
     }
+    
+    // Add this button in ManageSalesPersonnelJPanel constructor:
+JButton addNewBtn = new JButton("+ Add New Sales Person");
+addNewBtn.setBounds(740, 55, 180, 25);
+addNewBtn.setBackground(new Color(102, 153, 255));
+addNewBtn.setForeground(Color.WHITE);
+addNewBtn.addActionListener(e -> {
+    AddSalesPersonJPanel panel = new AddSalesPersonJPanel(business, cardPanel);
+    cardPanel.add("AddSalesPerson", panel);
+    ((CardLayout) cardPanel.getLayout()).next(cardPanel);
+});
+add(addNewBtn);
 }
     
 }
