@@ -3,6 +3,7 @@ package UserInterface.SalesManagement;
 import TheBusiness.Business.Business;
 import TheBusiness.Personnel.Person;
 import TheBusiness.SalesManagement.SalesPersonProfile;
+import TheBusiness.UserAccountManagement.UserAccount;
 import javax.swing.*;
 import java.awt.*;
 
@@ -73,13 +74,44 @@ public class AddSalesPersonJPanel extends JPanel {
             return;
         }
         
-        // Create person
-        Person person = business.getPersonDirectory().newPerson(name);
+        // Check if username already exists
+        UserAccount existingUser = business.getUserAccountDirectory().findUserAccount(name);
+        if (existingUser != null) {
+            JOptionPane.showMessageDialog(this, 
+                "A user with this name already exists. Please use a different name.");
+            return;
+        }
         
-        // Create sales person profile
-        SalesPersonProfile salesProfile = business.getSalesPersonDirectory()
-            .newSalesPersonProfile(person);
+        try {
+            // Create person
+            Person person = business.getPersonDirectory().newPerson(name);
+            
+            // Create sales person profile
+            SalesPersonProfile salesProfile = business.getSalesPersonDirectory()
+                .newSalesPersonProfile(person);
+            
+            // Create user account
+            UserAccount userAccount = business.getUserAccountDirectory()
+                .newUserAccount(salesProfile, username, password);
+            
+            JOptionPane.showMessageDialog(this, 
+                "Sales person '" + name + "' created successfully!\n" +
+                "Username: " + username + "\n" +
+                "They can now login to the system.",
+                "Success",
+                JOptionPane.INFORMATION_MESSAGE);
+            
+            // Clear fields
+            nameField.setText("");
+            usernameField.setText("");
+            passwordField.setText("");
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, 
+                "Error creating sales person: " + ex.getMessage(),
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
     }
-    
 }
-       

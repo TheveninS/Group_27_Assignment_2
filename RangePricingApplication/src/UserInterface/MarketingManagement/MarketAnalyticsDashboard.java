@@ -57,27 +57,32 @@ public class MarketAnalyticsDashboard extends JPanel {
     }
     
     private void openPanel(int index) {
-        JPanel panel = null;
-        switch(index) {
-            case 0: 
-                panel = new MarketPerformanceJPanel(business, cardPanel);
-                break;
-            case 1: 
-                panel = new ChannelPerformanceJPanel(business, cardPanel);
-                break;
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                JOptionPane.showMessageDialog(this, 
-                    "This analytics feature is under development.\n" +
-                    "Please check Market and Channel Performance reports.");
-                return;
-        }
-        
-        if (panel != null) {
-            cardPanel.add(panel);
-            ((CardLayout) cardPanel.getLayout()).next(cardPanel);
-        }
+    JPanel panel = null;
+    switch(index) {
+        case 0: 
+            panel = new MarketPerformanceJPanel(business, cardPanel);
+            break;
+        case 1: 
+            panel = new ChannelPerformanceJPanel(business, cardPanel);
+            break;
+        case 2:
+            panel = new MarketChannelAnalysisJPanel(business, cardPanel);
+            break;
+        case 3:
+            panel = new SolutionOfferAnalysisJPanel(business, cardPanel);
+            break;
+        case 4:
+            panel = new RevenueByMarketJPanel(business, cardPanel);
+            break;
+        case 5:
+            panel = new RevenueByChannelJPanel(business, cardPanel);
+            break;
     }
+    
+    if (panel != null) {
+        cardPanel.add(panel);
+        ((CardLayout) cardPanel.getLayout()).next(cardPanel);
+    }
+}
+    
 }
