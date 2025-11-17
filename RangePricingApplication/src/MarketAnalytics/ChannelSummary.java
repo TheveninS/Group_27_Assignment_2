@@ -35,7 +35,10 @@ public class ChannelSummary {
         return channel.getChannelType();
     }
     
-    @Override
-    public String toString() {
-        return String.format("Channel: %s | Revenue: $%,d | Orders: %d",
-            channel.getChannelType()
+@Override
+public String toString() {
+    return String.format("Channel: %s | Revenue: $%,d | Orders: %d",
+        channel.getChannelType(), revenues, numberOfOrders);
+}
+
+}

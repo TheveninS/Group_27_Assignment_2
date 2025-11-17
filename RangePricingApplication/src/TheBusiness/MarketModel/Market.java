@@ -35,5 +35,13 @@ public class Market {
         validchannels.add(c);
     }
     
+    public String getName() {
+    return name;
+}
+
+public ArrayList<Channel> getValidChannels() {
+    return validchannels;
+}
+    
 
 }

@@ -16,7 +16,7 @@ import UserInterface.ProductManagement.ManageSuppliersJPanel;
 import javax.swing.JPanel;
 
 /**
- *
+ 
  * @author kal
  */
 public class BusinessManagerWorkAreaJPanel extends javax.swing.JPanel {
@@ -230,12 +230,13 @@ public class BusinessManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
-
-        CardSequencePanel.removeAll();
-//        ManageIncidents aos = new  ManageIncidents(businessunit, CardSequencePanel);
-        // aos.setAgenda(businessunit.getRiskManagementAgenda());
-//        CardSequencePanel.add("RiskAgendaObjectives", aos);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+         UserInterface.PriceSimulation.PriceSimulationDashboard dashboard = 
+        new UserInterface.PriceSimulation.PriceSimulationDashboard(business, CardSequencePanel);
+    
+    CardSequencePanel.add("PricingSimulation", dashboard);
+    CardSequencePanel.revalidate();
+    CardSequencePanel.repaint();
+    ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 }//GEN-LAST:event_jButton11ActionPerformed
 
 
@@ -247,5 +248,6 @@ public class BusinessManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     // End of variables declaration//GEN-END:variables
+
 
 }

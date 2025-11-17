@@ -32,8 +32,10 @@ public class MarketSummary {
     }
     
     public String getMarketName() {
-        return market.name; // You may need a getter method in Market class
-    }
+    return market.getName();
+}
+    
+    
     
     @Override
     public String toString() {

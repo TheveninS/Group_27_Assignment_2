@@ -99,4 +99,8 @@ public class Product {
         return ceilingPrice;
     }
 
+    public void updateTargetPrice(int suggestedTarget) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
