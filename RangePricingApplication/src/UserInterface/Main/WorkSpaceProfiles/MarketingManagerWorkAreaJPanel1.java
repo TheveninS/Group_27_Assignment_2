@@ -13,7 +13,9 @@ package UserInterface.Main.WorkSpaceProfiles;
 import TheBusiness.Business.Business;
 import UserInterface.ManageTheBusiness.ManageTheBusinessJPanel;
 import UserInterface.ProductManagement.ManageSuppliersJPanel;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,7 +35,30 @@ public class MarketingManagerWorkAreaJPanel1 extends javax.swing.JPanel {
         business = b;
         this.CardSequencePanel = clp;
         initComponents();
+        
+        // Add logout button
+        JButton logoutBtn = new javax.swing.JButton();
+        logoutBtn.setBackground(new java.awt.Color(255, 102, 102));
+        logoutBtn.setFont(getFont());
+        logoutBtn.setForeground(new java.awt.Color(255, 255, 255));
+        logoutBtn.setText("Logout");
+        logoutBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        logoutBtn.setBounds(800, 20, 100, 30);
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
+        add(logoutBtn);
 
+    }
+    
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {
+        CardSequencePanel.removeAll();
+        CardSequencePanel.revalidate();
+        CardSequencePanel.repaint();
+        JOptionPane.showMessageDialog(this, 
+            "Logged out successfully! Please close and restart the application to login again.");
     }
 
     /**
@@ -148,41 +173,41 @@ public class MarketingManagerWorkAreaJPanel1 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4IdentifyResourceAssetsActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton4IdentifyResourceAssetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4IdentifyResourceAssetsActionPerformed
     // Manage Markets
     UserInterface.MarketingManagement.ManageMarketsJPanel panel = 
         new UserInterface.MarketingManagement.ManageMarketsJPanel(business, CardSequencePanel);
     
     CardSequencePanel.add("ManageMarkets", panel);
     ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-}
+}//GEN-LAST:event_jButton4IdentifyResourceAssetsActionPerformed
 
-private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {
+private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
     // Manage Channels
     UserInterface.MarketingManagement.ManageChannelsJPanel panel = 
         new UserInterface.MarketingManagement.ManageChannelsJPanel(business, CardSequencePanel);
     
     CardSequencePanel.add("ManageChannels", panel);
     ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-}
+}//GEN-LAST:event_jButton10ActionPerformed
 
-private void jButton6IdentifyEventsActionPerformed(java.awt.event.ActionEvent evt) {
+private void jButton6IdentifyEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6IdentifyEventsActionPerformed
     // Manage Prices - reuse existing panel
     UserInterface.PriceSimulation.ManagePricesJPanel panel = 
         new UserInterface.PriceSimulation.ManagePricesJPanel(business, CardSequencePanel);
     
     CardSequencePanel.add("ManagePrices", panel);
     ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-}
+}//GEN-LAST:event_jButton6IdentifyEventsActionPerformed
 
-private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {
+private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
     // Performance Reports - open Market Analytics Dashboard
     UserInterface.MarketingManagement.MarketAnalyticsDashboard dashboard = 
         new UserInterface.MarketingManagement.MarketAnalyticsDashboard(business, CardSequencePanel);
     
     CardSequencePanel.add("MarketAnalytics", dashboard);
     ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-}
+}//GEN-LAST:event_jButton11ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

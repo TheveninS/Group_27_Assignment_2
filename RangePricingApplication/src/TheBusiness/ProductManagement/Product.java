@@ -102,5 +102,13 @@ public class Product {
     public void updateTargetPrice(int suggestedTarget) {
     this.targetPrice = suggestedTarget;
 }
+
+    public Object getSupplier() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Object getName() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

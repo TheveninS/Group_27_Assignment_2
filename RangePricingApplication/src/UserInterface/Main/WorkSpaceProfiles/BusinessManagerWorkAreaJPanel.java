@@ -13,7 +13,9 @@ package UserInterface.Main.WorkSpaceProfiles;
 import TheBusiness.Business.Business;
 import UserInterface.ManageTheBusiness.ManageTheBusinessJPanel;
 import UserInterface.ProductManagement.ManageSuppliersJPanel;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 /**
  
@@ -33,7 +35,30 @@ public class BusinessManagerWorkAreaJPanel extends javax.swing.JPanel {
         business = b;
         this.CardSequencePanel = clp;
         initComponents();
+        
+        // Add logout button
+        JButton logoutBtn = new javax.swing.JButton();
+        logoutBtn.setBackground(new java.awt.Color(255, 102, 102));
+        logoutBtn.setFont(getFont());
+        logoutBtn.setForeground(new java.awt.Color(255, 255, 255));
+        logoutBtn.setText("Logout");
+        logoutBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        logoutBtn.setBounds(800, 20, 100, 30);
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
+        add(logoutBtn);
 
+    }
+    
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {
+        CardSequencePanel.removeAll();
+        CardSequencePanel.revalidate();
+        CardSequencePanel.repaint();
+        JOptionPane.showMessageDialog(this, 
+            "Logged out successfully! Please close and restart the application to login again.");
     }
 
     /**
