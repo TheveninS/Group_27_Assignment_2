@@ -29,5 +29,9 @@ public class MarketCatalog {
         markets.add(market);
         return market;
     }
+    
+    public ArrayList<Market> getMarkets() {
+    return markets;
+}
 
 }

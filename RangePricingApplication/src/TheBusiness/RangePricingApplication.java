@@ -8,10 +8,16 @@ import TheBusiness.ProductManagement.*;
  * @author kal bugrara
  */
 public class RangePricingApplication {
+    
 
     public static void main(String[] args) {
-        System.out.println("Initializing Range Pricing Application...\n");
-        
+    // Launch the GUI instead of console output
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new UserInterface.Main.PricingMainFrame().setVisible(true);
+        }
+    });
+
         // Step 1: Initialize business with generated data
         Business business = ConfigureABusiness.initializeWithGeneratedData();
         
@@ -43,6 +49,7 @@ public class RangePricingApplication {
         
         System.out.println("\n[Strategy 3] BOTH ADJUSTMENTS");
         FinalReport reportBoth = controller.runCompleteOptimization("BOTH");
+        
         
         // Step 5: Print Final Report (Best Strategy)
         System.out.println("\n" + "=".repeat(80));
@@ -78,4 +85,8 @@ public class RangePricingApplication {
         System.out.println("=".repeat(80));
         topReport.printTopPerformersReport();
     }
+    
+    
+    
 }
+

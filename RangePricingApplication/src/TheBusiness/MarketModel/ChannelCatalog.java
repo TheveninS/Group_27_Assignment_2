@@ -34,5 +34,9 @@ public class ChannelCatalog {
         return null; //not found
     }
     
+    public ArrayList<Channel> getChannels() {
+    return channellist;
+}
+    
     
 }
